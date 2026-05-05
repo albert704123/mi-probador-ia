@@ -20,7 +20,7 @@ if st.button("3. ¡VER RESULTADO!"):
     if prenda and usuario:
         with st.spinner("🤖 Procesando... esto tarda unos 40 segundos."):
             try:
-                # Usamos la versión más estable
+                # Esta es la versión exacta que necesitamos
                 output = replicate.run(
                     "yisol/idm-vton:c8718e02",
                     input={
