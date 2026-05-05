@@ -18,12 +18,9 @@ usuario = st.camera_input("2. Tu Foto")
 
 if st.button("3. ¡VER RESULTADO!"):
     if prenda and usuario:
-        with st.spinner("🤖 Procesando... esto tarda 40 segundos."):
+        with st.spinner("🤖 Procesando... esto tarda unos 40 segundos."):
             try:
-                # Usamos la versión más estable y pública
-                with st.spinner("🤖 Procesando... esto tarda unos 40 segundos."):
-            try:
-                # Usamos la forma más sencilla para que no dé error 404
+                # Usamos la versión más estable
                 output = replicate.run(
                     "yisol/idm-vton:c8718e02",
                     input={
@@ -37,3 +34,5 @@ if st.button("3. ¡VER RESULTADO!"):
                     st.image(output[0], caption="¡Resultado!", use_container_width=True)
             except Exception as e:
                 st.error(f"Error: {e}")
+    else:
+        st.warning("Toma ambas fotos primero.")
