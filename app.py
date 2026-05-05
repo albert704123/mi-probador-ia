@@ -1,3 +1,10 @@
+import streamlit as st
+import replicate
+import os
+import requests
+import base64
+
+# El resto de tu código...
 # Alternativa 1: OOTDiffusion (modelo más nuevo y estable)
 output = replicate.run(
     "levihsu/ootdiffusion",
