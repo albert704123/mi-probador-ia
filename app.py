@@ -21,19 +21,19 @@ if st.button("3. ¡VER RESULTADO!"):
         with st.spinner("🤖 Procesando... esto tarda 40 segundos."):
             try:
                 # Usamos la versión más estable y pública
-                model = replicate.models.get("yisol/idm-vton")
-                version = model.versions.get("90656041")
-                
-                output = version.predict(
-                    human_img=usuario,
-                    garm_img=prenda,
-                    garment_des="una prenda",
-                    is_checked=True
+                with st.spinner("🤖 Procesando... esto tarda unos 40 segundos."):
+            try:
+                # Usamos la forma más sencilla para que no dé error 404
+                output = replicate.run(
+                    "yisol/idm-vton:c8718e02",
+                    input={
+                        "human_img": usuario,
+                        "garm_img": prenda,
+                        "garment_des": "una prenda",
+                        "is_checked": True
+                    }
                 )
-                
                 if output:
-                    st.image(output[0], caption="¡Listo!", use_container_width=True)
+                    st.image(output[0], caption="¡Resultado!", use_container_width=True)
             except Exception as e:
                 st.error(f"Error: {e}")
-    else:
-        st.warning("Faltan las fotos.")
